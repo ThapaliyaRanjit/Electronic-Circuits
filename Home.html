@@ -1,0 +1,238 @@
+<html>
+    <head>
+        <title>Electronic Circuits</title>
+        <style>
+            body{ 
+                margin:0; 
+                font-family:Arial;
+                background-color: #0f172a;
+                color: white;
+            }
+
+            .header{
+                background:#1e293b;
+                padding:10px;
+                display:flex;
+                justify-content:space-between;
+            }
+
+            .products{
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                gap:20px;
+                padding:20px;
+            }
+
+            .product{
+                background:#1e293b;
+                color:white;
+                border: 2px solid #06b6d4;
+                padding:15px;
+                text-align:center;
+                border-radius:15px;
+                transition: 0.4s;
+            }
+            .product:hover{
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #06b6d4;
+            }
+            .product img {
+                width: 200px;
+                height: 150px;
+            }
+
+            button{
+                background:#22c55e;
+                color:white;
+                padding:8px 14px;
+                cursor:pointer;
+                border: none;
+                border-radius: 6px;
+            }   
+            button:hover{
+                background-color: #16a34a;
+            }
+            .cart{
+                cursor: pointer;
+                font-size: 25px;
+                transition: 0.3s;
+            }
+            .cart:hover{
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #06b6d4;
+            }
+            .footer {
+                font-family: Arial, Helvetica, sans-serif;
+                background: #1e293b;
+                color: rgb(108, 182, 236);
+                text-align: center;
+                padding: 15px;
+            }
+            h2{
+                font-family: ui-monospace;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="header">
+            <h2>Electronic Circuits</h2>
+            <div class="cart" onclick="openCart()"><button> Cart </button><span id="count">0</span></div>
+        </div>
+
+        <div class="products">
+            <div class="product">
+                <img src="image\Arduino Board.png" alt="Product">
+                <h3>Arduino Board</h3>
+                <p>₹1800</p>
+                <button onclick="add('Arduino',1800)">Add</button>
+            </div>
+
+            <div class="product">
+                <img src="image\Raspberry Pi.webp" alt="Product">
+                <h3>Raspberry Pi</h3>
+                <p>₹4200</p>
+                <button onclick="add('Raspberry',4200)">Add</button>
+            </div>
+
+            <div class="product">
+                <img src="image\Sensor Module.webp" alt="Product">
+                <h3>Sensor Module</h3>
+                <p>₹850</p>
+                <button onclick="add('Sensor',850)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\PC Chip.jpg" alt="Product">
+                <h3>PC Chip</h3>
+                <p>₹999</p>
+                <button onclick="add('Chip',999)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Micro Controller.webp" alt="Product">
+                <h3>Micro Controller</h3>
+                <p>₹1200</p>
+                <button onclick="add('Micro',1200)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Relay Module.webp" alt="Product">
+                <h3>Relay Module</h3>
+                <p>₹350</p>
+                <button onclick="add('Relay',350)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Motor Driver.webp" alt="Product">
+                <h3>Motor Driver</h3>
+                <p>₹600</p>
+                <button onclick="add('Driver',600)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Power Supply.jpg" alt="Product">
+                <h3>Power Supply</h3>
+                <p>₹900</p>
+                <button onclick="add('Power',900)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Bread Board.jpg" alt="Product">
+                <h3>Bread Board</h3>
+                <p>₹250</p>
+                <button onclick="add('Bread',250)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Current Amplifier.webp" alt="Product">
+                <h3>Current Amplifier</h3>
+                <p>₹175</p>
+                <button onclick="add('Amplifier',175)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Charging Module.png" alt="Product">
+                <h3>Charging Module</h3>
+                <p>₹100</p>
+                <button onclick="add('Module',100)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Transceiver Module.jpg" alt="Product">
+                <h3>Transceiver Module</h3>
+                <p>₹115</p>
+                <button onclick="add('Transceiver',115)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Generator Module.jpg" alt="Product">
+                <h3>Generator Module</h3>
+                <p>₹130</p>
+                <button onclick="add('Generator',130)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Speed Regulator.jpg" alt="Product">
+                <h3>Speed Regulator</h3>
+                <p>₹140</p>
+                <button onclick="add('Regulator',140)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Channel Breakout.jpg" alt="Product">
+                <h3>Channel Breakout</h3>
+                <p>₹150</p>
+                <button onclick="add('Breakout',150)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Capacitor Kit.jpg" alt="Product">
+                <h3>Capacitor Kit</h3>
+                <p>₹300</p>
+                <button onclick="add('Capacitor',300)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\Resistor kit.jpg" alt="Product">
+                <h3>Resistor Kit</h3>
+                <p>₹200</p>
+                <button onclick="add('Resistor',200)">Add</button>
+            </div>
+            <div class="product">
+                <img src="image\LED pack.webp" alt="Product">
+                <h3>Led Pack</h3>
+                <p>₹150</p>
+                <button onclick="add('Led',150)">Add</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <h2>Customer Support</h2>
+            <h4>Help Center</h4>
+            <h4>Shipping & Handling</h4>
+            <h4>Returns</h4>
+            <h4>Tariff Updates</h4>
+            <br>
+            <h3>Contact Information</h3>
+            <h4>Internet Sales: (788)645-4884</h4>
+            <h4>Branch Sales: (008)225-5885</h4>
+        </footer>
+
+        <script>
+            let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+            function add(name, price){
+                if(cart[name]){
+                    cart[name].qty++;
+                }
+                else {
+                    cart[name] = {price:price, qty:1};
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateCount();
+            }
+
+            function updateCount(){
+                let c = 0;
+                for(let i in cart){
+                c += cart[i].qty;
+                }
+                document.getElementById("count").innerText = c;
+            }
+
+            function openCart(){
+                window.location.href = "cart.html";
+            }
+
+            updateCount();
+        </script>
+    </body>
+</html>

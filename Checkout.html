@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Checkout</title>
+
+        <style>
+            body{
+                font-family: Arial;
+                background:#0f172a;
+                padding:20px;
+            }
+
+            .box{
+                max-width:500px;
+                margin:auto;
+                background:#1e293b;
+                color: white;
+                border: 2px solid #06b6d4;
+                padding:20px;
+                border-radius:10px;
+                transition: 0.04s;
+            }
+            .box:hover{
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #06b6d4;
+            }
+
+            input, textarea{
+                width:100%;
+                padding:10px;
+                margin:10px 0;
+                border:1px solid #ccc;
+                border-radius:5px;
+            }
+
+            button{
+                padding:10px;
+                width:100%;
+                background:green;
+                color:white;
+                border:none;
+                border-radius:5px;
+                cursor:pointer;
+            }
+
+            button:hover{
+                background:darkgreen;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="box">
+            <h2>📦 Delivery Details</h2>
+
+            <form onsubmit="placeOrder(event)">
+            
+                <input type="text" id="name" placeholder="Full Name" required>
+
+                <input type="number" id="phone" placeholder="Phone Number" required>
+
+                <textarea id="address" placeholder="Full Address" required></textarea>
+
+                <input type="number" id="pin" placeholder="PIN Code" required>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+
+        <script>
+            function placeOrder(e){
+                e.preventDefault();
+
+                let name = document.getElementById("name").value;
+                let phone = document.getElementById("phone").value;
+                let address = document.getElementById("address").value;
+                let pin = document.getElementById("pin").value;
+
+                if(name=="" || phone=="" ||address=="" || pin==""){
+                    alert("Please fill all details!");
+                    return;
+                }
+                if(phone.length!==10){
+                    alert("Phone number must be 10 digits");
+                    return;
+                }
+                if(pin.length!==6){
+                    alert("Pin code must be 6 digits");
+                    return;
+                }
+                alert("✅ Order Placed Successfully!\n"+name);
+                localStorage.removeItem("cart");
+
+                window.location.href = "Home.html";
+            }
+        </script>
+
+    </body>
+</html>

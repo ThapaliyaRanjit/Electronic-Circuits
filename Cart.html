@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <title>Cart</title>
+        <style>
+            body{
+                font-family:Arial;
+                background:#0f172a;
+                color: white;
+                padding:20px; 
+            }
+            table{
+                width:100%; 
+                background:#1e293b; 
+            }
+            th,td{
+                border:1px solid #ccc; 
+                padding:10px; 
+                text-align:center; 
+            }
+            button{
+                padding:6px 12px; 
+                margin:5px; 
+                cursor:pointer; 
+            }
+            .buy{
+                background:#049d3a;
+                color:white;
+                border: 2px solid whitesmoke;
+                border-radius: 2px;
+                transition: 0.04s;
+            }
+            .buy:hover{
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #5cd25c;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>🛒 Your Cart</h2>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+            <tbody id="data"></tbody>
+        </table>
+
+        <h3 id="grand"></h3>
+
+        <button class="buy" onclick="buy()">Buy Now</button>
+        <button onclick="back()">⬅ Back</button>
+
+        <script>
+            let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+            function show(){
+                let html = "";
+                let total = 0;
+
+                for(let i in cart){
+                    let t = cart[i].price * cart[i].qty;
+                    total += t;
+
+                    html += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>₹${cart[i].price}</td>
+                        <td>
+                            <button onclick="change('${i}',-1)">-</button>
+                            ${cart[i].qty}
+                            <button onclick="change('${i}',1)">+</button>
+                        </td>
+                        <td>₹${t}</td>
+                    </tr>`;
+                }
+
+                document.getElementById("data").innerHTML = html;
+                document.getElementById("grand").innerText ="Grand Total: ₹" + total;
+            }
+
+            function change(item, val){
+                cart[item].qty += val;
+                if(cart[item].qty <= 0){
+                    delete cart[item];
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+            show();
+            }
+
+            function buy(){
+                if(Object.keys(cart).length === 0){
+                    alert("Cart is empty!");
+                    return;
+                }
+                localStorage.removeItem("cart");
+                window.location.href = "Checkout.html";
+            }
+
+            function back(){
+                window.location.href = "home.html";
+            }
+
+            show();
+        </script>
+    </body>
+</html>

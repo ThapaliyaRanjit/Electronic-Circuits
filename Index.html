@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Login</title>
+        <style>
+            body{
+                font-family: Arial;
+                background-color: #0f172a;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+            }
+            .login{
+                background:#1e293b;
+                color:white;
+                border: 2px solid #06b6d4;
+                padding:30px;
+                border-radius:10px;
+                width:500px;
+                text-align:center;
+                transition: 0.4s;
+            }
+            .login:hover{
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #06b6d4;
+            }
+            input, button{
+                width:100%;
+                padding:10px;
+                margin:10px ;
+            }
+            button{
+                background:#22c55e;
+                color:white;
+                border:none;
+                border-radius: 12px;
+                cursor:pointer;
+            }
+            h1{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="login">
+            <h1>Electronic Circuit</h1>
+            <h2>Login</h2>
+            <input type="text" id="user" placeholder="Username">
+            <input type="password" id="pass" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p id="msg" style="color:red;"></p>
+        </div>
+
+        <script>
+            function login(){
+                let u = document.getElementById("user").value;
+                let p = document.getElementById("pass").value;
+
+                if(u !== "" && p !== ""){
+                    alert("Login Successful!\nWelcome " + u);
+                    window.location.href = "Home.html";
+                } 
+                else {
+                    alert("Please enter username and password");
+                }
+            }
+        </script>
+    </body>
+</html>
